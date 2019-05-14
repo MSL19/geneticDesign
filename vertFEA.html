@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+    <script>
+    function setup() {
+  createCanvas(400, 1000);
+  let previousY = 250;
+  let k = 1;
+  let mg = 10;
+/*for(var i = 0; i<5; i++){
+    if((((5-i)*mg)/k)<35){
+    coords[i] = createVector(200, previousY-=(50-((5-i)*mg)/k));
+    }
+    else{
+      coords[i] = createVector(200, previousY-=15);
+      console.log(i);2
+    }
+    
+}*/
+for(var i = 4; i>=0; i--){
+  if(i == 4){
+    coords[i] = createVector(200,previousY);
+  }
+  else if(((i)*mg)/k<35){
+    coords[i] = createVector(200, previousY-=(50-((i)*mg)/k));
+    }
+    else{
+      coords[i] = createVector(200, previousY-=15);
+      console.log(i);
+    }
+    
+    
+}
+
+}
+var coords = {};//f = kx----> x= f/k
+function draw() {
+ 
+    square(coords[0].x+40, coords[0].y, 15);
+    square(coords[1].x+40, coords[1].y, 15);
+    square(coords[2].x+40, coords[2].y, 15);
+    square(coords[3].x+40, coords[3].y, 15);
+    square(coords[4].x+40, coords[4].y, 15);
+    
+    square(coords[0].x+70, 50, 15);
+    square(coords[1].x+70, 100, 15);
+    square(coords[2].x+70, 150, 15);
+    square(coords[3].x+70, 200, 15);
+    square(coords[4].x+70, 250, 15);
+   // console.log(coords);
+}
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
