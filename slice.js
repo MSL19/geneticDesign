@@ -13,26 +13,55 @@ class chunck{
         return this.endPoint;
     }
 }
-class Slice{
+class slice{
     constructor(radius){
-        this.AC = Math.random()*((Math.PI*2*radius)/5);
-
+        
+        this.color = color(Math.random()*255, Math.random()*255, Math.random()*255);
         this.spring = this.AC*Ksp;
         this.mass = this.AC*density;
         this.sector = (radius*Math.PI*2)/5;
+        this.AC = this.sector*Math.random();
         this.divisions = 1;//Math.floor(Math.random()*maxDiv)+1;
-        this.form = [];
-        for(let i = 1; i<(this.divisions); i++){
-            let start = (Math.random()/this.divisions)*i*this.sector;
-            this.form[i] = new chunck(start,start+((Math.random())/this.divisions)*this.sector/2);
+      /*  this.form = [];
+        let start = (this.sector/this.divisions)*Math.random();
+        let end = start + (this.sector/this.divisions)*Math.random();
+        for(let i = 0; i<(this.divisions); i++){
+           
+            this.form[i] = new chunck(start,end);
+            
+            this.AC += form[i].getEnd()-form[i].getStart();
         }
         if(this.divisions === 1){
             let start = (Math.random()/this.divisions)*this.sector/2;
             this.form[0] = new chunck(start,start+((Math.random())/this.divisions)*this.sector/2);
-        }        
+            this.AC += form[0].getEnd()-form[0].getStart();
+        }  */
+             
     }
     mutateSmall(){
-        for(let i = 0; i<this.form.length; i++){
+        if(Math.random()>0.8){
+        this.AC += (Math.random()-0.48)*this.sector/4;
+        this.color = color(Math.random()*255, Math.random()*255, Math.random()*255);
+        if(this.AC > this.sector){
+            this.AC = this.sector;
+        }
+        if(this.AC < 0){
+            this.AC += 1;
+            
+        }
+    }
+    }
+    getColor(){
+        return this.color;
+    }
+    getAC(){
+        if(this.AC < 0){
+            this.AC = 1;
+            
+        }
+        return this.AC;
+    }    
+        /* for(let i = 0; i<this.form.length; i++){
             let newStart = this.form[i].getStart + (Math.random()-0.5)/5;
             let newEnd = this.form[i].getEnd + (Math.random()-0.5)/5;
             if(newStart>this.sector){
@@ -53,8 +82,8 @@ class Slice{
                 newEnd = temp;
             }
             this.form[i] = new chunck(newStart, newEnd);
-        }
+        }*/
     }
-}
 
-let test = new Slice(50);
+
+//module.exports = silce;
