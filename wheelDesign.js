@@ -1,3 +1,4 @@
+
 //const slice = require("./slice");
 const scalor = 2;
 class wheelDesign{
@@ -38,55 +39,133 @@ class wheelDesign{
         return this.fitness;
     }
     drawDesC(){
-        createCanvas(800,800);
+        createCanvas(1000,1000);
         background(50);
 
         noStroke();
-        
+        translate(500, 500);
+        strokeWeight(10);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(this.sliceArr[i].getColor());
-            strokeWeight(10);
-            arc(50+i*4, 400, 4*i, 4*i, 0-(this.sliceArr[i].getAC()/(i*Math.PI*0.4)), 0+(this.sliceArr[i].getAC()/(i*Math.PI*0.4)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }
+        rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(this.sliceArr[i].getColor());
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }
+        rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(this.sliceArr[i].getColor());
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(this.sliceArr[i].getColor());
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(this.sliceArr[i].getColor());
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }
+
+
 
     }
     drawDes(){
-        createCanvas(2000,2000);
+        createCanvas(1000,1000);
         background(50);
 
         noStroke();
-        translate(1000, 1000);
-        strokeWeight(15);
+        translate(500, 500);
+        strokeWeight(10);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(255, 204, 0);
-            arc(0, 0, 20*i, 20*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }
         rotate((2*PI) / 5.0);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(255, 4, 0);
-            arc(0, 0, 20*i, 20*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }
         rotate((2*PI) / 5.0);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(255, 4, 0);
-            arc(0, 0, 20*i, 20*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }rotate((2*PI) / 5.0);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(255, 4, 0);
-            arc(0, 0, 20*i, 20*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }rotate((2*PI) / 5.0);
         for(let i = 0; i<this.sliceArr.length; i++){
             noFill();
             stroke(255, 4, 0);
-            arc(0, 0, 20*i, 20*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
         }
 
 
+    }
+    showFEA(){
+        createCanvas(1000,1000);
+        background(50);
+
+        noStroke();
+        translate(500, 500);
+        strokeWeight(10);
+        let movementNum = 0;
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            let color = 0;
+            if(this.sliceArr[i].getAC()<this.sliceArr[i].getSector()){
+                color = 3*this.sliceArr[i].getAC();
+            }
+            else{
+                color = 255;
+            }
+            stroke(0, 204,color);
+            if(i>0){
+            if(this.sliceArr[i].getAC()<this.sliceArr[i].getSector()){
+                movementNum += (10/this.sliceArr[i].getAC());
+            }
+            }
+           /* if(movementNum > 10*i){
+                movementNum = 2000;
+                console.log("asdasdsadsa");
+            }*/
+            arc(0-movementNum, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+            console.log(movementNum);
+        }
+        
+        rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(255, 204, 0);
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }
+        rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(255, 204, 0);
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(255, 204, 0);
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }rotate((2*PI) / 5.0);
+        for(let i = 0; i<this.sliceArr.length; i++){
+            noFill();
+            stroke(255, 204, 0);
+            arc(0, 0, 10*i, 10*i, 0-(this.sliceArr[i].getAC()/(i*scalor)), 0+(this.sliceArr[i].getAC()/(i*scalor)));
+        }
     }
     evalFitness(){
         this.fitness = 0;
@@ -95,11 +174,14 @@ class wheelDesign{
             this.fitness += this.sliceArr[i].getAC();
             mass += this.sliceArr[i].getAC()*i*i;
             if(this.sliceArr[i].getAC() < (0.2*this.sliceArr[i].getSector())){ 
-                this.fitness -= 160;
+                this.fitness -= 120;
             } 
            if(i>0){
             this.fitness -= 0.8*(Math.abs(this.sliceArr[i].getAC()-this.sliceArr[i-1].getAC()));
 
+           }
+           if(this.sliceArr[i].getAC()===this.sliceArr[i].getSector()){
+               this.fitness += 1.5;
            }
             /*if(i>0&&this.sliceArr[i].getAC()>(this.sliceArr[i-1].getAC()*1.6)){
                 this.fitness-=70;
