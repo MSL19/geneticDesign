@@ -39,8 +39,8 @@ class slice{
              
     }
     mutateSmall(){
-        if(Math.random()>0.8){
-        this.AC += (Math.random()-0.48)*this.sector/4;
+        if(Math.random()>0.97){
+        this.AC += (Math.random()-0.48)*this.sector/13;
         this.color = color(Math.random()*255, Math.random()*255, Math.random()*255);
         if(this.AC > this.sector){
             this.AC = this.sector;
@@ -54,13 +54,26 @@ class slice{
     getColor(){
         return this.color;
     }
+    getSector(){
+        return this.sector;
+    }
     getAC(){
         if(this.AC < 0){
             this.AC = 1;
             
         }
         return this.AC;
-    }    
+    } 
+    clone() { //this is needed to stop shallow copying
+        let newSlice = new slice(this.radius);
+        newSlice.color = this.color;
+        newSlice.spring = this.spring;
+        newSlice.mass = this.mass;
+        newSlice.sector = this.sector;
+        newSlice.AC = this.AC;
+        newSlice.divisions = this.divisions;
+        return newSlice;
+    }   
         /* for(let i = 0; i<this.form.length; i++){
             let newStart = this.form[i].getStart + (Math.random()-0.5)/5;
             let newEnd = this.form[i].getEnd + (Math.random()-0.5)/5;

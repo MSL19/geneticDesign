@@ -35,6 +35,10 @@ function runNextGen(){
     }
     designArr = tempArr;
 }
+for(let i = 0; i<numDes; i++){
+    designArr[i].evalFitness();
+}
+designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
 console.log(designArr);
     if(colorM){
         designArr[0].drawDesC();
