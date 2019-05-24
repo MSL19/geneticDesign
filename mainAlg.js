@@ -1,6 +1,7 @@
 //const wheelDesign = require("./wheelDesign");
 const numDes = 100;
 let designArr = [];
+let bestDesArr = [];
 let colorM = true;
 function createPop(){
     for(let i = 0; i<numDes; i++){

@@ -130,7 +130,7 @@ class wheelDesign{
             else{
                 color = 255;
             }
-            stroke(0, 204,color);
+            stroke(255-color, color*1.2,0);
             if(i>0){
             if(this.sliceArr[i].getAC()<this.sliceArr[i].getSector()){
                 movementNum += (10/this.sliceArr[i].getAC());
@@ -190,7 +190,7 @@ class wheelDesign{
                 this.fitness-= (this.sliceArr[i].getAC()-);
             }*/
         }
-        this.fitness = this.fitness / (8*mass);
+        this.fitness = this.fitness / (10*mass);
     }
    
 }
