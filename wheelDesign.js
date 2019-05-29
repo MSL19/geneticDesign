@@ -1,6 +1,10 @@
 
 //const slice = require("./slice");
 const scalor = 2;
+let massScale = 2;
+let uniScale = 0.8;
+let strengthScale = 120;
+let completeAdv = 2;
 let materialCost = 8;
 class wheelDesign{
     constructor(numSlices){
@@ -169,39 +173,47 @@ class wheelDesign{
         }
     }
     evalFitness(){
-        this.fitness = 0;
-        let mass = 0;
-        let material = 0;
-        for(let i = 0; i<this.sliceArr.length; i++){
-            this.fitness += this.sliceArr[i].getAC();
-            mass += this.sliceArr[i].getAC()*i*i;
-            material = mass;
-            if(this.sliceArr[i].getAC() < (0.2*this.sliceArr[i].getSector())){ 
-                this.fitness -= 120;
-            } 
-           if(i>0){
-            this.fitness -= 1.8*(Math.abs(this.sliceArr[i].getAC()-this.sliceArr[i-1].getAC()));
-
-           }
-           /*if((this.sliceArr[i].getAC()>(0.9*this.sliceArr[i].getSector()))&&(this.sliceArr[i].getAC()!==this.sliceArr[i].getSector())){
-               this.fitness -= 20;
-           }
-           if(this.sliceArr[i].getAC()===this.sliceArr[i].getSector()){
-               this.fitness += 2;
-           }*/
-            /*if(i>0&&this.sliceArr[i].getAC()>(this.sliceArr[i-1].getAC()*1.6)){
-                this.fitness-=70;
+            
+            this.fitness = 0;
+            let mass = 0;
+            for(let i = 0; i<this.sliceArr.length; i++){
+                this.fitness += this.sliceArr[i].getAC();
+                mass += this.sliceArr[i].getAC()*i*i;
+                if(this.sliceArr[i].getAC() < (0.2*this.sliceArr[i].getSector())){
+                    this.fitness -= 120;
+                }
+               if(i>0){
+                this.fitness -= uniScale*(Math.abs(this.sliceArr[i].getAC()-this.sliceArr[i-1].getAC()));
+     
+               }
+               if(this.sliceArr[i].getAC()===this.sliceArr[i].getSector()){
+                this.fitness += completeAdv;
+                }
+               /*if((this.sliceArr[i].getAC()>(0.9*this.sliceArr[i].getSector()))&&(this.sliceArr[i].getAC()!==this.sliceArr[i].getSector())){
+                   this.fitness -= 20;
+               }
+               if(this.sliceArr[i].getAC()===this.sliceArr[i].getSector()){
+                   this.fitness += 2;
+               }*/
+                /*if(i>0&&this.sliceArr[i].getAC()>(this.sliceArr[i-1].getAC()*1.6)){
+                    this.fitness-=70;
+                }
+                else if(i>0&&this.sliceArr[i].getAC()<(this.sliceArr[i-1].getAC()*0.8)){
+                    this.fitness-= (this.sliceArr[i].getAC()-);
+                }*/
             }
-            else if(i>0&&this.sliceArr[i].getAC()<(this.sliceArr[i-1].getAC()*0.8)){
-                this.fitness-= (this.sliceArr[i].getAC()-);
-            }*/
+            this.fitness = this.fitness / (Math.pow(mass,massScale));
         }
-        this.fitness = this.fitness / (material*materialCost*mass);
-    }
-   
+      
+
+    }      
+
+function newValues(){
+    massScale = parseFloat(document.getElementById("mScale").value);
+    uniScale = parseFloat(document.getElementById("uniScale").value);
+    strengthScale = parseFloat(document.getElementById("strScale").value);
+    completeAdv = parseFloat(document.getElementById("comScale").value);
+  
 }
-function newCost(){
-    var x = document.getElementById("mCost").value;
-    materialCost = x;
-}
+
 //module.exports = wheelDesign;

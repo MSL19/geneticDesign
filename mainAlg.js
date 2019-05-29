@@ -1,5 +1,6 @@
 //const wheelDesign = require("./wheelDesign");
 const numDes = 100;
+let generation = 0;
 let designArr = [];
 let bestArrI = 0;
 let bestDesArr = [];
@@ -23,35 +24,7 @@ function monoChr(){
     designArr[0].drawDes();
 }
 function runNextGen100(){
-    for(let j = 0; j<100; j++){
-    for(let i = 0; i<numDes; i++){
-        designArr[i].evalFitness();
-    }
-    designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
-    
-    let tempArr = [];
-    for(let i = 0; i<numDes/2; i++){
-        tempArr[i] = designArr[i].mate(designArr[i+1]);
-    }
-    for(let i = (numDes/2); i>0; i--){
-        tempArr.push(designArr[i].mate(designArr[i-1]));
-    }
-    designArr = tempArr;
-}
-for(let i = 0; i<numDes; i++){
-    designArr[i].evalFitness();
-}
-designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
-console.log(designArr);
-    if(colorM){
-        designArr[0].drawDesC();
-    }
-    else{
-        designArr[0].drawDes();
-    }
-}
-function runNextGen1000(){
-    for(let j = 0; j<1000; j++){
+    for(let j = generation; j<generation+100; j++){
     for(let i = 0; i<numDes; i++){
         designArr[i].evalFitness();
     }
@@ -79,6 +52,42 @@ console.log(designArr);
     else{
         designArr[0].drawDes();
     }
+generation+=100;
+document.getElementById("genDisp").innerHTML = "Generation: "+generation;
+
+}
+function runNextGen1000(){
+    for(let j = generation; j<generation+1000; j++){
+    for(let i = 0; i<numDes; i++){
+        designArr[i].evalFitness();
+    }
+    designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
+    if(j%100===0){
+        bestDesArr.push(designArr[0]);
+    }
+    let tempArr = [];
+    for(let i = 0; i<numDes/2; i++){
+        tempArr[i] = designArr[i].mate(designArr[i+1]);
+    }
+    for(let i = (numDes/2); i>0; i--){
+        tempArr.push(designArr[i].mate(designArr[i-1]));
+    }
+    designArr = tempArr;
+}
+for(let i = 0; i<numDes; i++){
+    designArr[i].evalFitness();
+}
+designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
+console.log(designArr);
+    if(colorM){
+        designArr[0].drawDesC();
+    }
+    else{
+        designArr[0].drawDes();
+    }
+    generation+=1000;
+    document.getElementById("genDisp").innerHTML = "Generation: "+generation;
+
 }
 function runNextGen(){
     for(let j = 0; j<100; j++){
@@ -107,6 +116,13 @@ console.log(designArr);
     else{
         designArr[0].drawDes();
     }
+generation++;
+document.getElementById("genDisp").innerHTML = "Generation: "+generation;
+
+if(generation%100===0){
+    bestDesArr.push(designArr[0]);
+
+}
 }
 function showAnalysis(){
     for(let i = 0; i<numDes; i++){

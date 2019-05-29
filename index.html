@@ -3,26 +3,50 @@
 <html>
 	<head>
 		<title>Wheel Builder</title>
-	</head>
-	<body>
+    </head>
+    <style>
+        .container button {
+            display: block;
+        }
+    </style>
+
+	<body style="background-color:grey;">
 		<canvas id="world"></canvas>
 		<script language="javascript" type="text/javascript" src="p5.js"></script>
         <script src="slice.js"></script> 
 
         <script src="wheelDesign.js"></script>
         <script src="mainAlg.js"></script>
-        
-        <button onclick="colorMo()">Click me to see color</button>
-        <button onclick="monoChr()">Click me to go monochrome</button>        
-        <button onclick="createPop()">Click me to create designs</button>
-        <button onclick="runNextGen()">Click me to run 1 generations</button>
-        <button onclick="runNextGen100()">Click me to run 100 generations</button>
-        <button onclick="runNextGen1000()">Click me to run 1000 generations</button>
-        <button onclick="showAnalysis()">Click me to see FEA</button>
-        <button onclick="scrollBack()">Click me to see see previous best design</button>
-        <button onclick="scrollForward()">Click me to see see next best design</button>
-        <input type="text" id="mCost" value="Material Cost">
-        <button onclick="newCost()">Update Cost</button>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <div class="container"></div>
+        <button class="btn" onclick="colorMo()">Click me to see color</button>
+        <button class="btn" onclick="monoChr()">Click me to go monochrome</button>        
+        <button class="btn" onclick="createPop()">Click me to create designs</button>
+        <button  class="btn" onclick="runNextGen()">Click me to run 1 generations</button>
+        <button class="btn" onclick="runNextGen100()">Click me to run 100 generations</button>
+        <button class="btn" onclick="runNextGen1000()">Click me to run 1000 generations</button>
+        <button class="btn" onclick="showAnalysis()">Click me to see FEA</button>
+        <button class="btn" onclick="scrollBack()">Click me to see see previous best design</button>
+        <button class="btn" onclick="scrollForward()">Click me to see see next best design</button>
+        <label for="mScale">Inertia Importance</label>
+        <input type="text"  id="mScale" value=2>
+        <label for="mScale">Uniformnity Importance</label>
+        <input type="text" id="uniScale" value=0.8>
+        <label for="mScale">Absolute Strength Importance</label>
+
+        <input type="text" id="strScale" value=120>
+        <label for="mScale">Fracture Resistance Importance</label>
+
+       <input type="text" id="comScale" value=2>
+
+        <button class="btn" onclick="newValues()">Update Values</button>
+        <strong id = "genDisp">Generation: 0</strong>
+    </div>
 
 
 	</body>
