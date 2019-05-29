@@ -1,3 +1,4 @@
+
 //const wheelDesign = require("./wheelDesign");
 const numDes = 100;
 let generation = 0;
@@ -125,15 +126,11 @@ if(generation%100===0){
 }
 }
 function showAnalysis(){
-    for(let i = 0; i<numDes; i++){
-        designArr[i].evalFitness();
-    }
-    designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
-    designArr[0].showFEA();
+    bestDesArr[bestArrI].showFEA();
 }
 function scrollForward(){
     bestArrI--;
-    if(bestArrI ===0){
+    if(bestArrI <= 0){
         bestArrI = bestDesArr.length;
     }
     bestDesArr[bestArrI].drawDes();
@@ -141,8 +138,10 @@ function scrollForward(){
 function scrollBack(){
     
     bestArrI++;
-    if(bestArrI ===bestDesArr.length){
+    if(bestArrI >= bestDesArr.length){
         bestArrI = 0;
     }
     bestDesArr[bestArrI].drawDes();
 }
+
+

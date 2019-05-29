@@ -44,7 +44,8 @@ class wheelDesign{
         return this.fitness;
     }
     drawDesC(){
-        createCanvas(1000,1000);
+        let canvas = createCanvas(1000,1000);
+        canvas.parent('canvas_box');        
         background(50);
 
         noStroke();
@@ -82,7 +83,8 @@ class wheelDesign{
 
     }
     drawDes(){
-        createCanvas(1000,1000);
+        let canvas = createCanvas(1000,1000);
+        canvas.parent('canvas_box');
         background(50);
 
         noStroke();
@@ -119,8 +121,8 @@ class wheelDesign{
 
     }
     showFEA(){
-        createCanvas(1000,1000);
-        background(50);
+        let canvas = createCanvas(1000,1000);
+        canvas.parent('canvas_box');        background(50);
 
         noStroke();
         translate(500, 500);
@@ -216,4 +218,46 @@ function newValues(){
   
 }
 
+window.onload = function() {
+
+    var ex1 = document.getElementById('example1');
+    var ex2 = document.getElementById('example2');
+    var ex3 = document.getElementById('example3');
+
+    ex1.onclick = handler;
+    ex2.onclick = handler1;
+    ex3.onclick = handler2;
+
+}
+
+function handler() {
+    massScale = 1;
+    uniScale = 1.1;
+    strengthScale = 180;
+    completeAdv = 20;
+    document.getElementById("mScale").value = massScale;
+    document.getElementById("uniScale").value = uniScale;
+    document.getElementById("strScale").value = strengthScale;
+    document.getElementById("comScale").value = completeAdv;
+}
+function handler1() {
+    massScale = 3;
+    uniScale = 2.8;
+    strengthScale = 180;
+    completeAdv = 20;
+    document.getElementById("mScale").value = massScale;
+    document.getElementById("uniScale").value = uniScale;
+    document.getElementById("strScale").value = strengthScale;
+    document.getElementById("comScale").value = completeAdv;
+
+
+} function handler2() {
+    massScale = 4;
+    uniScale = 1.8;
+    strengthScale = 100;
+    completeAdv = 10;
+    document.getElementById("mScale").value = massScale;
+    document.getElementById("uniScale").value = uniScale;
+    document.getElementById("strScale").value = strengthScale;
+    document.getElementById("comScale").value = completeAdv;}
 //module.exports = wheelDesign;

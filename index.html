@@ -5,13 +5,28 @@
 		<title>Wheel Builder</title>
     </head>
     <style>
-        .container button {
+        .container {
+            display:grid;
+            grid-template-columns: auto 20%;
+        }
+        .container button{
             display: block;
         }
+
+        .left-side {
+            grid-column: 1;
+        }
+
+        .right-side {
+            grid-column: 2;
+        }
+       
+
+</style>
+
     </style>
 
 	<body style="background-color:grey;">
-		<canvas id="world"></canvas>
 		<script language="javascript" type="text/javascript" src="p5.js"></script>
         <script src="slice.js"></script> 
 
@@ -23,30 +38,43 @@
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-        <div class="container"></div>
-        <button class="btn" onclick="colorMo()">Click me to see color</button>
-        <button class="btn" onclick="monoChr()">Click me to go monochrome</button>        
-        <button class="btn" onclick="createPop()">Click me to create designs</button>
-        <button  class="btn" onclick="runNextGen()">Click me to run 1 generations</button>
-        <button class="btn" onclick="runNextGen100()">Click me to run 100 generations</button>
-        <button class="btn" onclick="runNextGen1000()">Click me to run 1000 generations</button>
-        <button class="btn" onclick="showAnalysis()">Click me to see FEA</button>
-        <button class="btn" onclick="scrollBack()">Click me to see see previous best design</button>
-        <button class="btn" onclick="scrollForward()">Click me to see see next best design</button>
-        <label for="mScale">Inertia Importance</label>
-        <input type="text"  id="mScale" value=2>
-        <label for="mScale">Uniformnity Importance</label>
-        <input type="text" id="uniScale" value=0.8>
-        <label for="mScale">Absolute Strength Importance</label>
+        <div class="container">
+            <div class="left-side" id="canvas_box">
+            </div>
+               
+            <div class="right-side">    
+                <strong id = "genDisp">Generation: 0</strong>    
+                <button class="btn" onclick="colorMo()">Click me to see color</button><br>
+                <button class="btn" onclick="monoChr()">Click me to go monochrome</button>  <br>      
+                <button class="btn" onclick="createPop()">Click me to create designs</button> <br>
+                <button  class="btn" onclick="runNextGen()">Click me to run 1 generations</button> <br>
+                <button class="btn" onclick="runNextGen100()">Click me to run 100 generations</button> <br>
+                <button class="btn" onclick="runNextGen1000()">Click me to run 1000 generations</button> <br>
+                <button class="btn" onclick="showAnalysis()">Click me to see FEA</button> <br>
+                <button class="btn" onclick="scrollBack()">Click me to see see previous best design</button> <br>
+                <button class="btn" onclick="scrollForward()">Click me to see see next best design</button> <br>
+                <label for="mScale">Inertia Importance</label> 
+                <input type="text"  id="mScale" value=2><br>
+                <label for="mScale">Uniformnity Importance</label>
+                <input type="text" id="uniScale" value=0.8> <br>
+                <label for="mScale">Absolute Strength Importance</label>
 
-        <input type="text" id="strScale" value=120>
-        <label for="mScale">Fracture Resistance Importance</label>
+                <input type="text" id="strScale" value=120> <br>
+                <label for="mScale">Fracture Resistance Importance</label>
 
-       <input type="text" id="comScale" value=2>
+                <input type="text" id="comScale" value=2><br>
 
-        <button class="btn" onclick="newValues()">Update Values</button>
-        <strong id = "genDisp">Generation: 0</strong>
-    </div>
+                <input type="radio" name="example1" id="example1" value="Example 1" />
+                <label for="example1">Bently Mode</label> <br>
+                <input type="radio" name="example1" id="example2" value="Example 2" />
+                <label for="example1">Bently Mode 2.0</label> <br>
+                <input type="radio" name="example1" id="example3" value="Example 3" />
+                <label for="example1">Superleggera Mode</label> <br>
+                <button class="btn" onclick="newValues()">Update Values</button>
+                
+            </div>
+
+        </div>
 
 
 	</body>
