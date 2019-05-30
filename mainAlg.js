@@ -11,6 +11,9 @@ function createPop(){
     for(let i = 0; i<numDes; i++){
         designArr[i] = new wheelDesign(100);
     }
+    designArr.sort(function(a,b){return b.getFitness() - a.getFitness()});
+    bestDesArr.push(designArr[0]);
+
 }
 async function setup(){
     createPop();
